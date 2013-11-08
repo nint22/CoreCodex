@@ -1,0 +1,104 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; ${c.challengesview_challengesgroup.ChallengeGroupName}</p>
+			
+			<div style="text-align: center;">
+				
+				<p>
+					<h2><img src="/icons/folder.png" /> ${c.challengesview_challengesgroup.ChallengeGroupName}</h2>
+					<h4>${c.challengesview_challengesgroup.ChallengeGroupDescription}</h4>
+					Difficulty: ${c.challengesview_challengesgroup.AverageDifficulty} of 5
+						% for i in range(c.challengesview_challengesgroup.AverageDifficulty):
+&#9733;\
+						% endfor
+					- Points: +${c.challengesview_challengesgroup.TotalPoints}
+					<br/>
+					
+					Completion:  ${c.challengesview_challengesgroup.CompletedChallenges} of ${c.challengesview_challengesgroup.ChallengeCount}
+					% if c.challengesview_challengesgroup.CompletedChallenges == c.challengesview_challengesgroup.ChallengeCount:
+						<img src="/icons/check_green.png" />
+					% else:
+						<img src="/icons/check_yellow.png" />
+					% endif
+					<br/>
+					<a href="/challenges/view">Back to Programming Challenges</a>
+				</p>
+				
+			</div>
+			
+			<hr noshade/>
+			
+			<table class="bigtable"> 
+			
+				<tr> 
+					<th width="150px"><a href="">Title</a></th> 
+					<th width="300px"><a href="">Description</a></th> 
+					<th width="80px"><a href="">Attempts / All Users</a></th> 
+					<th width="80px"><a href="">Solved / All Attempts</a></th> 
+					<th width="50px"><a href="">Points</a></th> 
+					<th width="50px"><a href="">Difficulty</a></th> 
+					<th width="50px"><a href="">Complete</a></th> 
+				</tr> 
+				
+				<% index = 0 %>
+				% for challenge in c.challengesview_challengesmeta:
+					<% index += 1 %>
+					% if index % 2 == 0:
+						<tr class="row_even" onclick="window.open('/challenge/${challenge.ChallengeID}', '_self');" style="cursor: pointer;">
+					% else:
+						<tr class="row_odd" onclick="window.open('/challenge/${challenge.ChallengeID}', '_self');" style="cursor: pointer;">
+					% endif
+							<td style="text-align: left; font-weight: bold;">
+								<div style="width: 90%; margin-left: auto; margin-right: auto;">
+									<a href="/challenge/${challenge.ChallengeID}"><img src="/icons/document.png" /> ${index}: ${challenge.Title}</a>
+								</div>
+							</td> 
+							
+							<td><div style="width: 95%; margin-left: auto; margin-right: auto;">${challenge.ShortDescription}</div></td> 
+							
+							<td style="text-align:center;" align="center">
+								<div style="width:80px;height:16px;background-color:#9eb3c7;position:relative;margin-left: auto; margin-right: auto;">
+									<div style="width:${c.chalenge_percentage[index-1][0]}%;height:100%;background-color:#306080;"></div>
+									<div style="width:100%;height:100%;text-align:center;position:absolute;top:0px;left:0;font-size:10;">${c.chalenge_percentage[index-1][0]}%</div>
+								</div>
+							</td> 
+							
+							<td style="text-align:center;" align="center">
+								<div style="width:80px;height:16px;background-color:#9eb3c7;position:relative;margin-left: auto; margin-right: auto;">
+									<div style="width:${c.chalenge_percentage[index-1][1]}%;height:100%;background-color:#306080;"></div>
+									<div style="width:100%;height:100%;text-align:center;position:absolute;top:0px;left:0;font-size:10;">${c.chalenge_percentage[index-1][1]}%</div>
+								</div>
+							</td> 
+							
+							<td style="text-align:center;">+${challenge.Points}</td> 
+							
+							<td style="text-align:center;">
+								<div style="width: 95%; margin-left: auto; margin-right: auto;">
+									% for i in range(challenge.Difficulty):
+&#9733;\
+									% endfor
+									<br/>${challenge.Difficulty} of 5
+								</div>
+							</td> 
+							
+							<td style="text-align:center;">
+								% if challenge.solved:
+									<img src="/icons/check_green.png" /><br/> Solved
+								% elif challenge.attempts == 0:
+									<img src="/icons/check_yellow.png" /><br/> Not Attempted
+								% elif challenge.attempts == 1:
+									<img src="/icons/check_red.png" /><br/> ${challenge.attempts} Attempt
+								% else:
+									<img src="/icons/check_red.png" /><br/> ${challenge.attempts} Attempts
+								% endif
+							</td> 
+						</tr>
+				%endfor
+				
+			</table>
+			
+		</div>
+	</div>
+</td>

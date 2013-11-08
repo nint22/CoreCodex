@@ -1,0 +1,86 @@
+<script src="/codemirror/codemirror.js" type="text/javascript"></script>
+
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px"> 
+			
+			<p class="tabletitle">&raquo; Programming Challenge: ${c.challenge.Title}</p>
+			
+			<div style="text-align: center;">
+			
+				<p>
+					<h2><img src="/icons/document.png" /> Challenge: ${c.challenge.Title}</h2>
+					Difficulty: ${c.challenge.Difficulty} of 5
+						% for i in range(c.challenge.Difficulty):
+&#9733;\
+						% endfor
+					- Points: +${c.challenge.Points}
+					<br/>
+					Supported Languages:
+					% for i in range(len(c.challenge.Languages)):
+						% if i < len(c.challenge.Languages) - 1:
+							${c.challenge.Languages[i]},
+						% else:
+							${c.challenge.Languages[i]}
+						% endif
+					% endfor
+					<br/>
+					% if c.challenge.solved:
+						<img src="/icons/check_green.png" /> Solved
+					% elif c.challenge.attempts == 0:
+						<img src="/icons/check_yellow.png" /> Not Attempted
+					% elif c.challenge.attempts == 1:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempt
+					% else:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempts
+					% endif
+				</p>
+				
+				<p>
+					<a href="/challenge/${c.challenge.ChallengeID}">Back to Challenge Description: ${c.challenge.Title}</a>
+				</p>
+				
+			</div>
+			
+			<hr noshade />
+			
+			<div align="center">
+				<form method="POST" action="/submit/${c.challenge.ChallengeID}">
+					<p>
+						Paste or edit source code below:
+						<br/>
+						<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+							<textarea cols="80" rows="16" name="code" id="codeinputbox" style="width:95%">${c.challenge.StarterCode}</textarea>
+						</div>
+						<br/>
+						<br/>
+						Supported Language:
+						<br/>
+						<select name="language" size="1">
+							% for language in c.challenge.Languages:
+								<option value="${c.challenge.Languages[i]}">${language}</option>
+							% endfor
+						</select>
+					</p>
+					<p>
+						<input type="submit" value="   Submit Code   " />
+					</p>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</td>
+
+
+<script type="text/javascript">
+    var editor = CodeMirror.fromTextArea('codeinputbox', {
+        parserfile: ["/parsepython.js"],
+        stylesheet: "/codemirror/pythoncolors.css",
+        path: "/codemirror/",
+        lineNumbers: true,
+        textWrapping: false,
+        indentUnit: 4,
+        parserConfig: {'pythonVersion': 2, 'strictErrors': true}
+    });
+</script>

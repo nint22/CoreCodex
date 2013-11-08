@@ -1,0 +1,104 @@
+		<!-- General Header -->
+		<div id="header">
+		
+			<!-- User info -->
+			<ul id="logged-user">
+				<li>
+					<div class="gravatar">
+						% if len(c.user_name) > 0:
+							<a href="/users/${c.user_name}" title="Anonymous User"><img alt="gravatar" src="/icons/face_${c.user_icon}.png" /></a>
+						% else:
+							<a title="Anonymous User"><img alt="gravatar" src="/icons/smirk.png" /></a>
+						% endif
+					</div>
+					<div class="account">
+						% if len(c.user_name) > 0:
+							<a href="/users/${c.user_name}" title="Anonymous User">${c.user_name} (+${c.user_points})</a>
+						% else:
+							<a title="Anonymous User">Guest</a>
+						% endif
+					</div>
+				</li>
+				
+				% if c.is_admin == True:
+					<li>
+						<a href="/admin">Admin</a>
+					</li>
+				% endif
+				
+				<li>
+					<a href="/${c.user_prefurl}">${c.user_pref}</a>
+				</li>
+				
+				<li>
+					<a href="/${c.user_loginurl}">${c.user_login}</a>
+				</li>
+			</ul>
+			
+			<!-- End of user info -->
+			<div id="header-inner" class="title top-left-rounded-corner top-right-rounded-corner">
+			
+				<!-- Logo / Title -->
+				<div id="logo">
+					<a href="/">
+						<img src="/logo/CoreCodexLogo_Header.png" alt="Core Codex Alpha" />
+					</a>
+				</div>
+				
+				<!-- Menu / directories -->
+				<ul id="quick">
+					<li>
+						<a title="Home" href="/challenges/view">
+							<span class="icon">
+								<img src="/icons/home.png" />
+							</span>
+							<span>
+								&raquo; Programming Challenges
+							</span>
+						</a>
+					</li>
+					
+					% if len(c.group_name) > 0:
+						<li>
+							<a href="/challenges/${c.group_id}" alt="${c.group_name}" title="${c.group_name}">
+								<%
+								if len(c.group_name) > 16:
+									c.group_name = c.group_name[0:16] + "..."
+								%>
+								<span class="icon">
+									<img src="/icons/folder.png" />
+								</span>
+								<span>
+									&raquo; ${c.group_name}
+								</span>
+							</a>
+						</li>
+					% endif
+					
+					% if len(c.challenge_name) > 0:
+						<li>
+							<a href="/challenge/${c.challenge_id}" alt="${c.challenge_name}" title="${c.challenge_name}">
+								<%
+								if len(c.challenge_name) > 16:
+									c.challenge_name = c.challenge_name[0:16] + "..."
+								%>
+								<span class="icon">
+									<img src="/icons/document.png" />
+								</span>
+								<span>
+									&raquo; ${c.challenge_name}
+								</span>
+							</a>
+						</li>
+					% endif
+					
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!-- End of header --> 
+
+		<div id="content">
+			<div id="content-inner">
+				<table class="dashboard" width="100%" border="0" cellspacing="5" cellpadding="0">
+					<tr>

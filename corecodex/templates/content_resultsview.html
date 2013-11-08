@@ -1,0 +1,57 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; All Challenge Attempts for User ${c.user_name}</p>
+						
+			<div align="center">
+				
+				<br/>
+				
+				<h4>Total Attempts: ${len(c.solutions)}</h4>
+				
+				
+				<table class="bigtable"> 
+				
+					<tr style="text-align:center;"> 
+						<th width="50px"><a href="">Solution ID</a></th> 
+						<th width="120px"><a href="">Group Name</a></th> 
+						<th width="120px"><a href="">Challenge Title</a></th> 
+						<th width="80px"><a href="">Submission Date</a></th> 
+						<th width="80px"><a href="">Memory Usage</a></th> 
+						<th width="80px"><a href="">Run Time</a></th> 
+						<th width="80px"><a href="">Result Code</a></th> 
+					</tr> 
+					
+					<% row_index = 0 %>
+					% for solution in c.solutions:
+						<% row_index += 1 %>
+						% if row_index % 2 == 0:
+						<tr class="row_even" onclick="window.open('/result/${solution["SolutionID"]}', '_self');" style="cursor: pointer;">
+						%else:
+						<tr class="row_odd" onclick="window.open('/result/${solution["SolutionID"]}', '_self');" style="cursor: pointer;">
+						% endif
+							<td style="text-align:center;"><a href="/result/${solution["SolutionID"]}"><img src="/icons/save.png" /> ${solution["SolutionID"]}</a></td> 
+							<td style="text-align:center;"><a href="/challenges/${solution["GroupID"]}"><img src="/icons/folder.png" /> ${solution["GroupName"]}</a></td> 
+							<td style="text-align:center;"><a href="/challenge/${solution["ChallengeID"]}"><img src="/icons/document.png" /> ${solution["ChallengeTitle"]}</a></td> 
+							<td style="text-align:center;">${solution["SubmissionDate"]}</td> 
+							<td style="text-align:center;">${solution["MemoryUsage"]} kB</td> 
+							<td style="text-align:center;">${solution["RuntimeUsage"]} ms</td> 
+							<td style="text-align:center;">
+								% if solution["ResultCode"] == 1:
+									<img src="/icons/check_green.png" /> Solved
+								% else:
+									<img src="/icons/check_red.png" /> Failed
+								% endif
+							</td> 
+						</tr>
+					%endfor
+					
+				</table> 
+				
+				<br/>
+				
+			</div>
+		</div>
+	</div>
+</td>

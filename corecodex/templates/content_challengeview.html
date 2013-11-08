@@ -1,0 +1,228 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; Programming Challenge: ${c.challenge.Title}</p>
+			
+			<div style="text-align: center;">
+				
+				<p>
+					<h2><img src="/icons/document.png" /> Challenge: ${c.challenge.Title}</h2>
+					Difficulty: ${c.challenge.Difficulty} of 5
+						% for i in range(c.challenge.Difficulty):
+&#9733;\
+						% endfor
+					- Points: +${c.challenge.Points}
+					<br/>
+					Supported Languages:
+					% for i in range(len(c.challenge.Languages)):
+						% if i < len(c.challenge.Languages) - 1:
+							${c.challenge.Languages[i]},
+						% else:
+							${c.challenge.Languages[i]}
+						% endif
+					% endfor
+					<br/>
+					% if c.challenge.solved:
+						<img src="/icons/check_green.png" /> Solved
+					% elif c.challenge.attempts == 0:
+						<img src="/icons/check_yellow.png" /> Not Attempted
+					% elif c.challenge.attempts == 1:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempt
+					% else:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempts
+					% endif
+				</p>
+				
+				<p>
+					<div style="font-size: 125%;"><a href="/submit/${c.challenge.ChallengeID}">Submit Solution</a></div>
+					<a href="/challenges/${c.challenge.ChallengeGroupID}">Back to "${c.groupname}"</a>
+				</p>
+				
+			</div>
+			
+			<hr noshade />
+			
+			<h3>Description:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+				<p>${c.challenge.LongDescription}<p>
+			</div>
+			
+			<br/>
+			
+			<h3>Formal Inputs &amp; Outputs:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Input Description:</h4>
+				
+				<div style="width: 95%; margin-left: auto; margin-right: auto;">
+					% if len(c.challenge.InputDescription) <= 0:
+						<div style="font-style:italic;">None</div>
+					% else:
+						${c.challenge.InputDescription}
+					% endif
+				</div>
+				
+				<h4>Output Description:</h4>
+				
+				<div style="width: 95%; margin-left: auto; margin-right: auto;">
+					% if len(c.challenge.OutputDescription) <= 0:
+						<div style="font-style:italic;">None</div>
+					% else:
+						${c.challenge.OutputDescription}
+					% endif
+				</div>
+			
+			</div>
+			
+			<br/>
+			
+			<h3>Sample Inputs &amp; Outputs:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Test Code:</h4>
+				% if len(c.challenge.SampleCode) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic;">None</div>
+				% else:
+					${c.formated_samplecode}
+				% endif
+			
+			</div>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Input:</h4>
+				% if len(c.challenge.SampleInput) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic;">None</div>
+				% else:
+					<pre>${c.challenge.SampleInput}</pre>
+				% endif
+			
+			</div>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Output:</h4>
+				% if len(c.challenge.SampleOutput) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic;">None</div>
+				% else:
+					<pre>${c.challenge.SampleOutput}</pre>
+				% endif
+			
+			</div>
+			
+			<br/>
+			
+			<h3>Starter Code:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+				${c.formated_code}
+			</div>
+			
+			<hr noshade/>
+			
+			<h3>Public Statistics:</h3>
+			
+			<div align="center" style="width: 95%; margin-left: auto; margin-right: auto;">
+				
+				% if len(c.graph_language_values) > 0:
+				
+					<table width="100%" style="text-align: center;">
+						<tr>
+							<td width="100%" colspan="2">
+								<h4>Common Errors</h4>
+								<img src="https://chart.googleapis.com/chart?cht=p&chd=t:${c.graph_error_values}&chs=550x180&chl=${c.graph_error_labels}&chf=bg,s,67676700&chma=50,50&chco=306080" />
+							</td>
+						</tr>
+						<tr>
+							<td width="50%">
+								<h4 style="text-align: center;">Languages Used</h4>
+								<img src="https://chart.googleapis.com/chart?cht=p&chd=t:${c.graph_language_values}&chs=250x200&chdl=${c.graph_language_labels}&chf=bg,s,67676700&chco=306080" />
+							</td>
+							<td width="50%">
+								<h4 style="text-align: center;">Accepted Solution Runtimes</h4>
+								<img src="https://chart.googleapis.com/chart?chxt=x,y&cht=bvs&chd=t:${c.graph_runtime_values}&chls=2.0&chs=250x200&chl=${c.graph_runtime_labels}&chf=bg,s,67676700&chco=306080&chbh=a,5,15" />
+							</td>
+						</tr>					
+					</table>
+				
+				% else:
+				
+					<p style="text-align: left;">No public attempts have yet been made...<p>
+				
+				% endif
+				
+			</div>
+			
+			<br/>
+			
+			<h3>Solution History:</h3>
+			
+			<div style="width: 95%; text-align: left; margin-left: auto; margin-right: auto;">
+			
+				% if len(c.challenge.solutions) > 0:
+					
+					<div align="center">
+					
+						<h4>Total Attempts: ${len(c.challenge.solutions)}</h4>
+						
+						<table class="bigtable"> 
+						
+							<tr style="text-align:center;"> 
+								<th width="80px"><a href="">Solution ID</a></th> 
+								<th width="80px"><a href="">Submission Date</a></th> 
+								<th width="80px"><a href="">Language</a></th> 
+								<th width="80px"><a href="">Memory Usage</a></th> 
+								<th width="80px"><a href="">Run Time</a></th> 
+								<th width="80px"><a href="">Completion</a></th> 
+							</tr> 
+							
+							<% row_index = 0 %>
+							% for solution in c.challenge.solutions:
+								<% row_index += 1 %>
+								% if row_index % 2 == 0:
+								<tr class="row_even" onclick="window.open('/result/${solution.SolutionID}', '_self');" style="cursor: pointer;">
+								%else:
+								<tr class="row_odd" onclick="window.open('/result/${solution.SolutionID}', '_self');" style="cursor: pointer;">
+								% endif
+									<td style="text-align:center;"><a href="/result/${solution.SolutionID}"><img src="/icons/save.png" /> ${solution.SolutionID}</a></td> 
+									<td style="text-align:center;">${solution.SubmitDateTime}</td> 
+									<td style="text-align:center;">${solution.SourceLanguage}</td> 
+									<td style="text-align:center;">${solution.MemoryUsage} kB</td> 
+									<td style="text-align:center;">${solution.RuntimeUsage} ms</td> 
+									<td style="text-align:center;">
+										% if solution.ResultCode == 1:
+											<img src="/icons/check_green.png" /> Solved
+										% else:
+											<img src="/icons/check_red.png" /> Failed
+										% endif
+									</td> 
+								</tr>
+							%endfor
+							
+						</table> 
+						
+					</div>
+				
+				% else:
+				
+					<p>No previous solutions attempted...<p>
+				
+				% endif	
+			
+			</div>
+			
+			<br/>
+			
+			<hr noshade />
+			
+			<div style="text-align: center;">
+				<h2><a href="/submit/${c.challenge.ChallengeID}">&raquo; Submit Solution &laquo;</a></h2>
+			</div>
+			
+		</div>
+	</div>
+</td>

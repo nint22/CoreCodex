@@ -1,0 +1,35 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px"> 
+			
+			<p class="tabletitle">&raquo; Login</p> 
+			
+			<div align="center">
+				<form method="POST" action="/login">
+					<h1>
+						<img src="/icons/smirk.png" /> User Login
+					</h1>
+					<h3>
+						${c.login_error}
+					</h3>
+					<table>
+						<tr>
+							<td>Username:</td><td><input type="text" name="username" size="32" /></td>
+						</tr>
+						<tr>
+							<td>Password:</td><td><input type="password" name="password" size="32" /></td>
+						</tr>
+					</table>
+					<p>
+						<input type="submit" value="   Login   " />
+					</p>
+				</form>
+				<p>
+					Need an account? <a href="/register">Register Today!</a> <br/>
+					Lost your password? <a href="/recover">Recover Password</a> <br/>
+				</p>
+			</div>
+			
+		</div>
+	</div>
+</td>

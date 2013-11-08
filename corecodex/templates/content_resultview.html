@@ -1,0 +1,158 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; Programming Challenge Result: ${c.challenge.Title}</p>
+			
+			<div style="text-align: center;">
+				
+				<p>
+					<h2><img src="/icons/document.png" /> Challenge: ${c.challenge.Title}</h2>
+					Difficulty: ${c.challenge.Difficulty} of 5
+						% for i in range(c.challenge.Difficulty):
+&#9733;\
+						% endfor
+					- Points: +${c.challenge.Points}
+					<br/>
+					Supported Languages:
+					% for i in range(len(c.challenge.Languages)):
+						% if i < len(c.challenge.Languages) - 1:
+							${c.challenge.Languages[i]},
+						% else:
+							${c.challenge.Languages[i]}
+						% endif
+					% endfor
+					<br/>
+					% if c.challenge.solved:
+						<img src="/icons/check_green.png" /> Solved
+					% elif c.challenge.attempts == 0:
+						<img src="/icons/check_yellow.png" /> Not Attempted
+					% elif c.challenge.attempts == 1:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempt
+					% else:
+						<img src="/icons/check_red.png" /> ${c.challenge.attempts} Attempts
+					% endif
+				</p>
+				
+				<p>
+					<a href="/challenge/${c.challenge.ChallengeID}">Back to Challenge Description: ${c.challenge.Title}</a>
+				</p>
+				
+			</div>
+			
+			<hr noshade />
+			
+			% if c.result.ResultCode >= 0:
+			
+			<h3>Results:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<ul>
+					<li>Result:<div style="width: 95%; margin-left: auto; margin-right: auto;"> 
+						% if c.result.ResultCode == 1:
+							<img src="/icons/check_green.png" /> Accepted
+						% elif c.result.ResultCode == 2:
+							<img src="/icons/check_red.png" /> Compile Time Error
+						% elif c.result.ResultCode == 3:
+							<img src="/icons/check_red.png" /> Run Time Error
+						% elif c.result.ResultCode == 4:
+							<img src="/icons/check_red.png" /> Function Result Does Not Match
+						% elif c.result.ResultCode == 5:
+							<img src="/icons/check_red.png" /> Program Outputs Do Not Match
+						% elif c.result.ResultCode == 6:
+							<img src="/icons/check_red.png" /> Formatting Error
+						% elif c.result.ResultCode == 7:
+							<img src="/icons/check_red.png" /> Timed Out
+						% elif c.result.ResultCode == 8:
+							<img src="/icons/check_red.png" /> Malicious Code Detected
+						% else:
+							<img src="/icons/check_yellow.png" /> Internal Error With CoreJudge
+						% endif
+						(Code: ${c.result.ResultCode})
+					</div></li>
+					<li>Source Language:<br/><div style="width: 95%; margin-left: auto; margin-right: auto;">${c.result.SourceLanguage}</div></li>
+					<li>Memory Usage:<br/><div style="width: 95%; margin-left: auto; margin-right: auto;">${c.result.MemoryUsage} kB</div></li>
+					<li>Runtime Usage:<br/><div style="width: 95%; margin-left: auto; margin-right: auto;">${c.result.RuntimeUsage} milliseconds</div></li>
+					<li>Time Submitted:<br/><div style="width: 95%; margin-left: auto; margin-right: auto;">${c.result.SubmitDateTime}</div></li>
+				</ul>
+			
+			</div>
+			
+			% if c.result.ResultCode == 3:
+				<h3>Output Result:</h3>
+				
+				<div style="width: 95%; margin-left: auto; margin-right: auto;">
+					<pre>${c.result.ResultString}</pre>
+				</div>
+			% endif
+			
+			<br/>
+			
+			<h3>Sample Output Comparisons:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Code:</h4>
+				% if len(c.challenge.SampleCode) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic">None</div>
+				% else:
+					${c.formated_samplecode}
+				% endif
+			
+			</div>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Input:</h4>
+				% if len(c.challenge.SampleInput) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic">None</div>
+				% else:
+					<pre>${c.challenge.SampleInput}</pre>
+				% endif
+			
+			</div>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Sample Output:</h4>
+				% if len(c.challenge.SampleOutput) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic">None</div>
+				% else:
+					<pre>${c.challenge.SampleOutput}</pre>
+				% endif
+			
+			</div>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+			
+				<h4>Your Output Against Sample:</h4>
+				% if len(c.result.SampleResultString) <= 0:
+					<div style="width: 95%; margin-left: auto; margin-right: auto; font-style:italic">None</div>
+				% else:
+					<pre>${c.result.SampleResultString}</pre>
+				% endif
+			
+			</div>
+			
+			<br/>
+			
+			<h3>Submitted Source Code:</h3>
+			
+			<div style="width: 95%; margin-left: auto; margin-right: auto;">
+				${c.formated_code}
+			</div>
+			
+			% else:
+			
+			<br/>
+			<div style="text-align: center;">
+				<h3>Not yet judged.</h3>
+				Please refresh the page in a few seconds.
+			</div>
+			
+			% endif
+			
+		</div>
+	</div>
+</td>

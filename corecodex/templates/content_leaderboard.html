@@ -1,0 +1,108 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; Leaderboards</p>
+						
+			<div align="center">
+				
+				<h2>Top 10 User Scores</h2>
+				
+				<table class="bigtable"> 
+				
+					<tr style="text-align:center;"> 
+						<th width="80px"><a href="">Rank</a></th> 
+						<th width="250px"><a href="">User Name</a></th> 
+						<th width="100px"><a href="">User Score</a></th> 
+					</tr> 
+					
+					<% row_index = 0 %>
+					% for user in c.top_scores:
+						<% row_index += 1 %>
+						% if user.UserPoints > 0:
+							% if row_index % 2 == 0:
+							<tr class="row_even" onclick="window.open('/users/${user.UserName}', '_self');" style="cursor: pointer;">
+							%else:
+							<tr class="row_odd" onclick="window.open('/users/${user.UserName}', '_self');" style="cursor: pointer;">
+							% endif
+								<td style="text-align:center;">${row_index}</td> 
+								<td style="text-align:center;"><a href="/users/${user.UserName}"><img alt="gravatar" src="/icons/face_${user.IconID}.png" /> ${user.UserName}</a></td> 
+								<td style="text-align:center;">+${user.UserPoints} Points</td> 
+							</tr>
+						% endif
+					%endfor
+					
+				</table> 
+				
+				<br/>
+				<br/>
+				
+				<h2>Top 10 Completed Challenges</h2>
+				
+				<table class="bigtable"> 
+				
+					<tr style="text-align:center;"> 
+						<th width="80px"><a href="">Rank</a></th> 
+						<th width="250px"><a href="">User Name</a></th> 
+						<th width="100px"><a href="">Completed Challenges</a></th> 
+					</tr> 
+					
+					<% row_index = 0 %>
+					% for user in c.top_challenges:
+						<% row_index += 1 %>
+						% if user[1] > 0:
+							% if row_index % 2 == 0:
+							<tr class="row_even" onclick="window.open('/users/${user[0].UserName}', '_self');" style="cursor: pointer;">
+							%else:
+							<tr class="row_odd" onclick="window.open('/users/${user[0].UserName}', '_self');" style="cursor: pointer;">
+							% endif
+								<td style="text-align:center;">${row_index}</td> 
+								<td style="text-align:center;"><a href="/users/${user[0].UserName}"><img alt="gravatar" src="/icons/face_${user[0].IconID}.png" /> ${user[0].UserName}</a></td> 
+								<td style="text-align:center;">${user[1]} Complete</td> 
+							</tr>
+						% endif
+					%endfor
+					
+				</table> 
+				
+				<br/>
+				<br/>
+				
+				<h2>Top 10 Achievements</h2>
+				
+				<table class="bigtable"> 
+				
+					<tr style="text-align:center;"> 
+						<th width="80px"><a href="">Rank</a></th> 
+						<th width="250px"><a href="">User Name</a></th> 
+						<th width="100px"><a href="">Achievements Earned</a></th> 
+					</tr> 
+					
+					<% row_index = 0 %>
+					% for user in c.top_achievements:
+						<% row_index += 1 %>
+						% if user[1] > 0:
+							% if row_index % 2 == 0:
+							<tr class="row_even" onclick="window.open('/users/${user[0].UserName}', '_self');" style="cursor: pointer;">
+							%else:
+							<tr class="row_odd" onclick="window.open('/users/${user[0].UserName}', '_self');" style="cursor: pointer;">
+							% endif
+								<td style="text-align:center;">${row_index}</td> 
+								<td style="text-align:center;"><a href="/users/${user[0].UserName}"><img alt="gravatar" src="/icons/face_${user[0].IconID}.png" /> ${user[0].UserName}</a></td> 
+								% if user[1] == 1:
+									<td style="text-align:center;">${user[1]} Achievement</td> 
+								% else:
+									<td style="text-align:center;">${user[1]} Achievements</td> 
+								% endif
+							</tr>
+						% endif
+					%endfor
+					
+				</table> 
+				
+				<br/>
+				
+			</div>
+		</div>
+	</div>
+</td>

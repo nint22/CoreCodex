@@ -1,0 +1,93 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px"> 
+			
+			<p class="tabletitle">&raquo; Change Password</p> 
+			
+			<p>Want to change your password? Simple: just confirm your old password and then type in your new password! Remeber
+			that passwords must be at least five (5) characters long and not contain any special characters.</p>
+			
+			<div align="center">
+				<form method="POST" action="/preferences?command=change">
+					<h3>
+						${c.change_error}
+					</h3>
+					<table>
+						<tr>
+							<td>Old Password:</td><td><input type="password" name="change_oldpassword" size="32" /></td>
+						</tr>
+						<tr>
+							<td>New Password:</td><td><input type="password" name="change_newpassword" size="32" /></td>
+						</tr>
+						<tr>
+							<td>Confirm Password:</td><td><input type="password" name="change_confirmpassword" size="32" /></td>
+						</tr>
+					</table>
+					<p>
+						<input type="submit" value="   Change User Password   " />
+					</p>
+				</form>
+			</div>
+			
+			<p class="tabletitle">&raquo; Set User Icon</p> 
+			
+			<p>Feel free to change your user icon (the little image found at the top of this page next to your user-name).
+			Just select one of the below icons and click "Set User Icon".</p>
+			
+			<div align="center">
+				<form method="POST" action="/preferences?command=icon">
+					<h3>
+						${c.icon_error}
+					</h3>
+					<p>
+						<table>
+						% for i in range(20):
+							
+							% if i % 5 == 0:
+								<tr>
+							% endif
+							
+							<td width="64px"><input type="radio" name="iconid" value="${i}"/> <img src="/icons/face_${i}.png" /></td>
+							
+							% if i % 5 == 4:
+								</tr>
+							% endif
+							
+						% endfor
+						</table>
+					</p>
+					<p>
+						<input type="submit" value="   Set User Icon   " />
+					</p>
+				</form>
+			</div>
+			
+			<p class="tabletitle">&raquo; Delete Account</p> 
+			
+			<p>Dont want your account anymore? We understand and provide you a full deletion function.
+			Just type in your current password and confirm that password, and we will instantly delete your account.</p>
+			
+			<div align="center">
+				<form method="POST" action="/preferences?command=delete">
+					<h3>
+						${c.delete_error}
+					</h3>
+					<table>
+						<tr>
+							<td>Current Password:</td><td><input type="password" name="delete_password" size="32" /></td>
+						</tr>
+						<tr>
+							<td>Confirm Password:</td><td><input type="password" name="delete_confirmpassword" size="32" /></td>
+						</tr>
+					</table>
+					<p>
+						<div style="font-weight: bold; color: red;">Warning: You cannot undo this action!<br/>Your account will be deleted forever!<br/>Be sure this is what you want to do:</div>
+						<br/>
+						<input type="submit" value="   Delete Account   " onClick="return confirm('Are you sure you want to delete your account?');" />
+					</p>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</td>

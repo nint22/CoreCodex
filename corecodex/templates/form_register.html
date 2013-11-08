@@ -1,0 +1,39 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px"> 
+			
+			<p class="tabletitle">&raquo; Register</p> 
+			
+			<div align="center">
+			
+				<h1><img src="/icons/smirk.png" /> User Registration</h1>
+				
+				<h3>${c.login_error}</h3>
+				
+				<form method="POST" action="/register">
+					
+					<table>
+						<tr>
+							<td>Username:</td><td><input type="text" name="username" size="32" /></td>
+						</tr>
+						<tr>
+							<td>E-Mail:</td><td><input type="text" name="useremail" size="32" /></td>
+						</tr>
+						<tr>
+							<td>Password:</td><td><input type="password" name="userpassword" size="32" /></td>
+						</tr>
+						<tr>
+							<td>Confirm Password:</td><td><input type="password" name="userconpassword" size="32" /></td>
+						</tr>
+					</table>
+					<p>
+						<input type="submit" value="   Register User   " />
+					</p>
+					
+				</form>	
+				
+			</div>
+			
+		</div>
+	</div>
+</td>

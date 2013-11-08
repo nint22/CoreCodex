@@ -1,0 +1,62 @@
+<td class="left" width="100%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px"> 
+		
+			<p class="tabletitle">&raquo; Programming Challenges List (${len(c.challengesview_challengegroup)} Available)</p> 
+			
+			<table class="bigtable"> 
+			
+				<tr> 
+					<th width="60px"><a href="">Challenge Group ID</a></th> 
+					<th width="160px"><a href="">Title</a></th> 
+					<th width="500px"><a href="">Description</a></th> 
+					<th width="60px"><a href="">Total Points</a></th> 
+					<th width="60px"><a href="">Average Difficulty</a></th> 
+					<th width="60px"><a href="">Completion</a></th> 
+				</tr> 
+				
+				<% index = 0 %>
+				% for challengegroup in c.challengesview_challengegroup:
+					<% index += 1 %>
+					% if index % 2 == 0:
+						<tr class="row_even" onclick="window.open('/challenges/${challengegroup.ChallengeGroupID}', '_self');" style="cursor: pointer;">
+					% else:
+						<tr class="row_odd" onclick="window.open('/challenges/${challengegroup.ChallengeGroupID}', '_self');" style="cursor: pointer;">
+					% endif
+							<td style="text-align:center;"><a href="/challenges/${challengegroup.ChallengeGroupID}"><img src="/icons/folder.png" /> ${challengegroup.ChallengeGroupID}</a></td> 
+							<td style="text-align:center; font-weight: bold;"><div style="width: 95%; margin-left: auto; margin-right: auto;">${challengegroup.ChallengeGroupName}</div></td> 
+							<td><div style="width: 95%; margin-left: auto; margin-right: auto;">${challengegroup.ChallengeGroupDescription}</div></td> 
+							<td style="text-align:center;">+${challengegroup.TotalPoints}</td> 
+							<td style="text-align:center;">
+								<div style="width: 95%; margin-left: auto; margin-right: auto;">
+									% if challengegroup.AverageDifficulty == 0:
+										&#9734;
+									% else:
+										% for i in range(challengegroup.AverageDifficulty):
+&#9733;\
+										% endfor
+									% endif
+									<br/>${challengegroup.AverageDifficulty} of 5
+								</div>
+							</td> 
+							<td style="text-align:center;">				
+								% if challengegroup.ChallengeCount > 0:
+									% if challengegroup.CompletedChallenges == challengegroup.ChallengeCount:
+										<img src="/icons/check_green.png" />
+									% else:
+										<img src="/icons/check_yellow.png" />
+									% endif
+									<br/>
+									${challengegroup.CompletedChallenges} of ${challengegroup.ChallengeCount}
+								% else:
+									<div style="font-style: italic;">Empty challenge set</div>
+								% endif
+							</td> 
+						</tr>
+				%endfor
+				
+			</table> 
+		
+		</div> 
+	</div> 
+</td> 

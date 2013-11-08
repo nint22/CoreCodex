@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<problemdescription ver="1" difficulty="1" language="python">
+
+	<title>Alpha 2 - To add or not to add</title>
+	<shortdescription>Write a function that that conditionally adds two integers.</shortdescription>
+	<description>Fill out the given starter code: Given two integers <b>a</b> and <b>b</b>,
+	return the sum if and only if the integer a is equal to or greater than 0. Otherwise,
+	return -1.</description>
+	
+	<inputs>
+		<input name="integer a" description="The first integer" />
+		<input name="integer b" description="The second integer" />
+	</inputs>
+	<outputs>
+		<input name="Function return" description="The sum of the two given integers if a is positive or zerop. Otherwise, returns zero" />
+	</outputs>
+	
+	<sampleinput>
+		2, 3
+		0, 0
+		-5, 3
+	</sampleinput>
+	<sampleoutput>
+		5
+		0
+		0
+	</sampleoutput>
+	<startercode>
+		def sum_function(a, b):
+			# Write code here...
+	</startercode>
+	
+	<testinput>
+		1, 2
+		3, 4
+		5, 6
+		0, 0
+		-1, -4
+	</testinput>
+	<testoutput>
+		3
+		7
+		11
+		0
+		0
+	</testoutput>
+	
+</problemdescription>

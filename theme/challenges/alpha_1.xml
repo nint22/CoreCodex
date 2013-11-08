@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<problemdescription ver="1" difficulty="1" language="python">
+
+	<title>Alpha 1 - Add two more!</title>
+	<shortdescription>Write a function that sums four integers.</shortdescription>
+	<description>Fill out the given startr code: Given four integers <b>a</b>, <b>b</b>, <b>c</b>, and <b>d</b>,
+	return the total sum.</description>
+	
+	<inputs>
+		<input name="integer a" description="The first integer" />
+		<input name="integer b" description="The second integer" />
+		<input name="integer b" description="The third integer" />
+		<input name="integer b" description="The fourth integer" />
+	</inputs>
+	<outputs>
+		<input name="Function return" description="The sum of the four given integers" />
+	</outputs>
+	
+	<sampleinput>
+		2, 3, 1, 1
+		0, 0, 1, 1
+		-5, 3, 1, 1
+	</sampleinput>
+	<sampleoutput>
+		7
+		2
+		4
+	</sampleoutput>
+	<startercode>
+		def sum_function(a, b, c, d):
+			# Write code here...
+	</startercode>
+	
+	<testinput>
+		1, 2, 1, 1
+		3, 4, 1, 1
+		5, 6, 1, 1
+		0, 0, 1, 1
+		-1, -4, 1, 1
+	</testinput>
+	<testoutput>
+		5
+		9
+		13
+		2
+		-3
+	</testoutput>
+	
+</problemdescription>

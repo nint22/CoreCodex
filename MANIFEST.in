@@ -1,0 +1,3 @@
+include corecodex/config/deployment.ini_tmpl
+recursive-include corecodex/public *
+recursive-include corecodex/templates *

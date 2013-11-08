@@ -1,0 +1,80 @@
+<td class="left" width="40%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; About Achievements</p>
+			
+			<p><strong>What are Achievements?</strong></p>
+			
+			<p>Achievements are rewards for completing certain tasks,
+			goals, or cool little tricks found on CoreCodex. There are a dozen
+			achievements given out for completing certain numbers, difficulty,
+			and specific programming challenges, as well as many others that
+			are here to entice you to challenge yourself and chellenge us!</p>
+			
+			<p><strong>How do I get Achievements?</strong></p>
+			
+			<p>Each achievement is listed on your user page and also give you
+			user points! Show them off by linking your account page <b>corecodex.com/users/[<i>your user name</i>]</b>
+			to your friends or just bask in your own awesome glory, racking in all
+			those extra user points. Either way, have fun!</p>
+			
+			<p><strong>Special Thanks:</strong></p>
+			
+			<p>Special thanks to <a href="http://www.yummygum.nl/">Yummy Gum</a> for the icons! <i>(IconSweets2)</i></p>
+			
+		</div>
+	</div>
+</td>
+
+<td class="right" width="60%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;"> 
+			
+			<p class="tabletitle">&raquo; All Achievements</p> 
+			
+				<table>
+				
+					<!-- Left achivements -->
+					<td class="left" width="50%" valign="top"> 
+						<div class="padded"> 
+							<div style="margin-bottom: 10px; text-align: center;"> 
+								
+								% for i in range(0, len(c.achievements), 2):
+									<% achievement = c.achievements[i] %>
+									<div style="width: 95%; margin-left: auto; margin-right: auto;">									
+										<img src="/${achievement.AchievementIconFileLocation}" title="Achivement #${achievement.AchievementID}" />
+										<h3>${achievement.AchievementName} (+${achievement.AchievementScore} Pts)</h3>
+										<p>${achievement.AchievementDescription}</p>
+										<hr/>
+									</div>
+								%endfor
+								
+							</div>
+						</div>
+					</td>
+					
+					<!-- Right achievments -->
+					<td class="right" width="50%" valign="top"> 
+						<div class="padded"> 
+							<div style="margin-bottom: 10px; text-align: center;"> 
+								
+								% for i in range(1, len(c.achievements), 2):
+									<% achievement = c.achievements[i] %>
+									<div style="width: 95%; margin-left: auto; margin-right: auto;">
+										<img src="/${achievement.AchievementIconFileLocation}" title="Achivement #${achievement.AchievementID}" />
+										<h3>${achievement.AchievementName} (+${achievement.AchievementScore} Pts)</h3>
+										<p>${achievement.AchievementDescription}</p>
+										<hr/>
+									</div>
+								%endfor
+								
+							</div>
+						</div>
+					</td>
+					
+				</table>
+				
+		</div>
+	</div>
+</td>

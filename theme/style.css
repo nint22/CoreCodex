@@ -1,0 +1,291 @@
+/***
+	Theme Name: CoreCodex by Core S2 - Software Solutions
+	Theme URI: http://www.corecodex.com/
+	Description: Official Core Codex Theme; Special thanks to Zach!
+	Version: 1.1
+***/
+
+/*** General font and form ***/
+
+body
+{
+	background: #e8e8e8 url("images/background.png") repeat-x 0 0;
+	font-family: "DejaVu Sans", "Lucida Grande", "Bitstream Vera Sans", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	margin-top: 0px;
+	margin-right: 16px;
+	margin-left: 16px;
+	padding: 0;
+}
+
+#header, #content, #footer
+{
+	min-width: 600px;
+	
+	/*** Allow centering ***/
+	width: 90%;
+	max-width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#content
+{
+    min-height: 500px;
+	background-color: #f8f8f8;
+}
+
+#content-inner
+{
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a
+{
+	color: #036;
+	text-decoration: none;
+	font-weight: 700;
+}
+a:hover
+{
+	color: #316293;
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	color: #292929;
+	font-weight: 700;
+}
+
+/*** User Info Tab Structure ***/
+
+#logged-user
+{
+	float: right;
+	padding: 0;
+	margin: 0 0 5px 0;
+	margin-bottom: 5px;
+	-webkit-border-radius: 0px 0px 6px 6px;
+	-khtml-border-radius: 0px 0px 6px 6px; 
+	-moz-border-radius: 0px 0px 6px 6px;
+	border-radius: 0px 0px 6px 6px;
+	background: #003367 url("images/user_inner.png") repeat-x;
+}
+
+#logged-user li
+{
+	list-style: none;
+	float: left;
+	margin: 4px 0 0;
+	padding: 4px 8px;
+	border-left: 1px solid #316293;
+}
+
+#logged-user li:first-child
+{
+	border-left: none;
+	margin: 0px;
+}
+
+#logged-user li:first-child div.account
+{
+	padding-top: 4px;
+	float: left;
+}
+
+div.gravatar
+{
+	float: left;
+	margin-right: 0.7em;
+	padding: 2px 5px 0;
+}
+
+/*** Text of users info ***/
+#logged-user li a
+{
+	color: #fff;
+	font-weight: 700;
+}
+
+/*** Title and navigation bar ***/
+#header-inner
+{
+	height: 45px;
+	clear: both;
+	position: relative;
+	background: #036 url("images/header_inner.png") repeat-x;
+	border-bottom: 2px solid #fff;
+	-webkit-border-radius: 6px 6px 0px 0px;
+	-khtml-border-radius: 6px 6px 0px 0px; 
+	-moz-border-radius: 6px 6px 0px 0px;
+	border-radius: 6px 6px 0px 0px;
+}
+
+/*** Title ***/
+
+#logo
+{
+	float: left;
+	position: absolute;
+	top: -25px;
+}
+#logo a
+{
+	color: #fff;
+	text-decoration: none;
+}
+a img
+{
+	border-style: none;
+}
+
+/*** Top-level directory listings ***/
+
+#quick
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	list-style-type: none;
+	margin: 8px 4px 0 0;
+	padding: 0;
+}
+
+#quick li
+{
+	position:relative;
+	float:left;
+	margin:0 5px 0 0;
+	padding:0;
+	background-color: #708fae;
+
+	-webkit-border-radius: 6px 6px 0px 0px;
+	-khtml-border-radius: 6px 6px 0px 0px; 
+	-moz-border-radius: 6px 6px 0px 0px;
+	border-radius: 6px 6px 0px 0px;
+}
+
+#quick li a
+{
+	color: white;
+	font-weight: 700;
+}
+#quick li:hover
+{
+	background-color: #4e4e4e;
+}
+
+#quick li span
+{
+	float: left;
+	display: block;
+	border-left: 1px solid #3f6f9f;
+	padding: 10px 12px 8px 10px;
+}
+
+#quick li span.icon
+{
+	border-left: none;
+	border-right: 1px solid #2e5c89;
+	padding: 8px 8px 4px;
+}
+
+
+/*** Main menu / directory hover state change ***/
+
+#quick li:hover span
+{
+	border-left: 1px solid #545454;
+}
+
+#quick li:hover span.icon
+{
+	border-left: none;
+	border-right: 1px solid #464646;
+}
+
+/*** Content ***/
+
+#footer-inner
+{
+	background: url("images/footer_inner.png") repeat-x scroll 0 0 #003367;
+	border-top: 2px solid #FFFFFF;
+	-webkit-border-radius: 0px 0px 6px 6px;
+	-khtml-border-radius: 0px 0px 6px 6px; 
+	-moz-border-radius: 0px 0px 6px 6px;
+	border-radius: 0px 0px 6px 6px;
+	padding: 5px 0;
+}
+
+#footer-inner p
+{
+	padding: 5px 25px 15px 0px;
+	color: #FFF;
+	font-weight: 700;
+}
+
+#footer-inner .footer-link
+{
+	float: left;
+	padding-left: 10px;
+}
+
+#footer-inner .footer-link a
+{
+	color: #FFF; 
+}
+
+/*** Bottom Copyright ***/
+
+#copyright-footer
+{
+	color: white;
+	text-align: center;
+}
+
+#copyright-footer a
+{
+	color: white;
+	text-decoration: none;
+}
+
+#copyright-footer a:hover
+{
+	text-decoration: underline;
+}
+
+
+/*** Content System ***/
+
+.tabletitle
+{
+    font-size: 10pt;
+    font-weight: bold;
+    padding: 3px 0 2px 0;
+    margin: 8px 4px 2px 0;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+
+/*** Big Table Style ***/
+
+.bigtable td
+{
+	vertical-align: top;
+}
+
+.bigtable th
+{
+	padding: 1px 4px;
+	border-bottom: 1px solid #999;
+}
+
+.row_odd { background-color: #f0f0f0; }
+.row_even { background-color: #ffffff; }
+
+/*** Utility ***/
+.clear { clear: both; }

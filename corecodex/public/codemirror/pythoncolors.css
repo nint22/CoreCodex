@@ -1,0 +1,66 @@
+/*** Modified to be more like the current output
+colors when reviewing code ***/
+
+html {
+  cursor: text;
+}
+
+.editbox {
+	padding: .4em;
+	margin: 0;
+	font-family: Bitstream Vera Sans Mono,monospace;
+	font-size: 10pt;
+	line-height: 1.1em;
+	color: black;
+	background-color: #ffffff;
+}
+
+pre.code, .editbox {
+  color: #660000;
+}
+
+.editbox p {
+  margin: 0;
+}
+
+span.py-delimiter, span.py-special {
+  color: #666666;
+}
+
+span.py-operator {
+  color: #666666;
+}
+
+span.py-error {
+  background-color: #660000;
+  color: #FFFFFF;
+}
+
+span.py-keyword {
+  color: #007020;
+  font-weight: bold;
+}
+
+span.py-literal {
+  color: #666666;
+}
+
+span.py-identifier {
+  color: black;
+}
+
+span.py-func  {
+  color: #06287e;
+}
+
+span.py-type, span.py-decorator {
+  color: #007020;
+}
+
+span.py-comment {
+  color: #60a0b0;
+}
+
+span.py-string, span.py-bytes, span.py-raw, span.py-unicode {
+  color: #AA2222;
+}

@@ -1,0 +1,138 @@
+<td class="left" width="50%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;">
+			
+			<p class="tabletitle">&raquo; User Information</p>
+			
+			<table>
+				<tr>
+				
+					<td width="60%">
+						<ul>
+							<li>User Name: ${c.user.UserName} (ID: ${c.user.UserID})</li>
+							<li>User Points: +${c.user_points}</li>
+							<li>Completed Challenges: ${len(c.complete_challenges)}</li>
+							<li>Accepted Solutions: ${c.success_count}</li>
+							<li>Attempted Challenges: ${c.attempt_count}</li>
+							<li>Success / Attempts Ratio: ${c.challenge_ratio}</li>
+							<li>Fastest Execution Time: ${c.fastest_speed}</li>
+							<li>Smallest Memory Footprint: ${c.smallest_memory}</li>
+						</ul>
+					</td>
+					
+					<td style="text-align: center;" width="40%">
+						Share your profile via QR Code:<br/>
+						<a href="http://www.corecodex.com/users/${c.user.UserName}"><img src="https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=corecodex.com/users/${c.user.UserName}&chld=M|1&choe=UTF-8"/></a>
+					</td>
+					
+				</tr>
+			</table>
+			
+			<p class="tabletitle">&raquo; Completed Challenges</p>
+			
+				% if len(c.complete_challenges) > 0:
+				
+					<table class="bigtable"> 
+					
+						<tr> 
+							<th width="50px"><a href="">Challenge ID</a></th> 
+							<th width="100px"><a href="">Group Name</a></th> 
+							<th width="100px"><a href="">Challenge Title</a></th> 
+							<th width="25px"><a href="">Points</a></th> 
+						</tr> 
+						
+						<% row_index = 0 %>
+						% for solution in c.complete_challenges:
+							<% row_index += 1 %>
+							% if row_index % 2 == 0:
+							<tr class="row_even" onclick="window.open('/challenge/${solution["ChallengeID"]}', '_self');" style="cursor: pointer;">
+							%else:
+							<tr class="row_odd" onclick="window.open('/challenge/${solution["ChallengeID"]}', '_self');" style="cursor: pointer;">
+							% endif
+								<td style="text-align:center;"><a href="/challenge/${solution["ChallengeID"]}"><img src="/icons/document.png" /> ${solution["ChallengeID"]}</a></td> 
+								<td style="text-align:center;"><a href="/challenges/${solution["GroupID"]}"><img src="/icons/folder.png" /> ${solution["GroupName"]}</a></td> 
+								<td style="text-align:center;">${solution["ChallengeTitle"]}</td> 
+								<td style="text-align:center;">+${solution["ChallengePoints"]}</td> 
+							</tr>
+						%endfor
+						
+					</table> 
+				
+				% else:
+				
+					<br/>
+					<div style="text-align:center;">Nothing here...</div>
+				
+				% endif
+				
+				<br/>
+				<div style="text-align:center;"><a href="/results/${c.user.UserName}">See all attempts from ${c.user.UserName}...</a></div>
+				
+			</div>
+			
+		</div>
+	</div>
+</td>
+
+<td class="right" width="50%" valign="top"> 
+	<div class="padded"> 
+		<div style="margin-bottom: 10px;"> 
+			
+			<p class="tabletitle">&raquo; User Trophies</p> 
+			
+				% if len(c.achievements) > 0:
+				
+					<table>
+					
+						<!-- Left achivements -->
+						<td class="left" width="50%" valign="top"> 
+							<div class="padded"> 
+								<div style="margin-bottom: 10px; text-align: center;"> 
+									
+									% for i in range(0, len(c.achievements), 2):
+										<% achievement = c.achievements[i] %>
+										<div style="width: 95%; margin-left: auto; margin-right: auto;">
+											<img src="/${achievement.AchievementIconFileLocation}" title="Achivement #${achievement.AchievementID}" />
+											<h3>${achievement.AchievementName} (+${achievement.AchievementScore} Pts)</h3>
+											<p>${achievement.AchievementDescription}</p>
+											<hr/>
+										</div>
+									%endfor
+									
+								</div>
+							</div>
+						</td>
+						
+						<!-- Right achievments -->
+						<td class="right" width="50%" valign="top"> 
+							<div class="padded"> 
+								<div style="margin-bottom: 10px; text-align: center;"> 
+									
+									% for i in range(1, len(c.achievements), 2):
+										<% achievement = c.achievements[i] %>
+										<div style="width: 95%; margin-left: auto; margin-right: auto;">
+											<img src="/${achievement.AchievementIconFileLocation}" title="Achivement #${achievement.AchievementID}" />
+											<h3>${achievement.AchievementName} (+${achievement.AchievementScore} Pts)</h3>
+											<p>${achievement.AchievementDescription}</p>
+											<hr/>
+										</div>
+									%endfor
+									
+								</div>
+							</div>
+						</td>
+						
+					</table>
+				
+				% else:
+				
+					<br/>
+					<div style="text-align:center;">Nothing here...</div>
+				
+				% endif
+				
+				<div style="text-align:center;"><a href="/achievements">Learn more about achievements!</a></div>
+				
+		</div>
+	</div>
+</td>
